@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+@media (min-width: 280px) {
+  .container {
+    max-width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%);
+    overflow: hidden;
+  }
+  .app {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 30px;
+  }
+  .score {
+    color: white;
+    width: 100%;
+    height: 130px;
+    border: 1px solid rgb(255, 255, 255, 0.6);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .logo {
+    line-height: 0.8;
+    position: relative;
+    top: 10px;
+  }
+  .logo h1 {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+  }
+  .score-table p {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #1F3757;
+    letter-spacing: 1px;
+  }
+  .score-table {
+    background: white;
+    color: gray;
+    width: 25%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  .score-table h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  .choose {
+    width: 300px;
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .choose, .result, .battle {
+    margin-top: 80px;
+  }
+  .choose-triangle svg {
+    transform: scale(0.7);
+  }
+  .coin {
+    position: absolute;
+    z-index: 2;
+  }
+  .choose .coin-inner:hover {
+    box-shadow: 0px 0px 5px 15px rgba(185, 185, 185, 0.1);
+  }
+  .paper {
+    top: 20px;
+    left: 0;
+  }
+  .scissors {
+    top: 20px;
+    right: 0;
+  }
+  .rock {
+    left: -80px;
+    right: 0;
+    bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+  }
+  .coin {
+    border-radius: 50%;
+  }
+  .battle .coin-inner:hover {
+    box-shadow: 0px 0px 5px 15px rgba(185, 185, 185, 0.1);
+  }
+  .coin-inner {
+    height: 120px;
+    width: 120px;
+    background: #4664F4;
+    box-shadow: 0 5px 0 0 #33449c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .paper .coin-inner {
+    background: #4664F4;
+    box-shadow: 0 5px 0 0 #33449c;
+  }
+  .scissors .coin-inner {
+    background: #EB9F0E;
+    box-shadow: 0 5px 0 0 #ac740e;
+  }
+  .rock .coin-inner {
+    background: #DB2E4D;
+    box-shadow: 0 5px 0 0 #9D1634;
+  }
+  .coin-background {
+    height: 90px;
+    width: 90px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 8px 3px -1px #BABFD4 inset;
+  }
+  /* BATTLE */
+  .battle {
+    display: flex;
+    justify-content: space-around;
+  }
+  .battle .coin, .result .coin {
+    position: static;
+    color: white;
+  }
+  .battle .rock {
+    position: static;
+  }
+  .picking {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+  }
+  .picking h3 {
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    margin-top: 30px;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .battle .coin-inner {
+    height: 120px;
+    width: 120px;
+  }
+  .battle .picking .rock, .result .picking .rock {
+    margin-left: initial;
+    margin-right: initial;
+    width: auto;
+  }
+  .battle .coin-background {
+    height: 90px;
+    width: 90px;
+  }
+  /* RESULT */
+  .result {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .result .picking {
+    position: relative;
+    width: 50%;
+  }
+  .show-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .show-score {
+    color: white;
+    text-transform: uppercase;
+    width: 100%;
+  }
+  .show-score h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .btn-again {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .btn-again button {
+    width: 250px;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .winner {
+    position: absolute;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(transparent 33%, rgba(245, 245, 245, 0.145) 34%, rgba(245, 245, 245, .145) 40%, rgba(245, 245, 245, .095) 30%, rgba(245, 245, 245, .095) 55%, rgba(245, 245, 245, .055) 50%, rgba(245, 245, 245, .055) 100%);
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  .winner.active {
+    display: block;
+  }
+  .btn-footer {
+    width: 100%;
+    margin-top: 130px;
+    display: flex;
+    justify-content: center;
+  }
+  .btn-footer button {
+    padding: 10px 30px;
+    margin-right: 15px;
+    border: 1px solid white;
+    background: none;
+    color: white;
+    border-radius: 5px;
+    letter-spacing: 1.5px;
+    transition: 0.2s all;
+    cursor: pointer;
+  }
+  .btn-footer button:hover {
+    color: #1F3757;
+    background: white;
+  }
+  .modal-container {
+    background: rgba(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+  .modal {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .rules {
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+  }
+  .modal-image {
+    margin-top: 50px;
+  }
+  .close-modal {
+    cursor: pointer;
+    margin-top: 100px;
+  }
+  .close-modal:active {
+    transform: scale(0.9);
+  }
+}
+
+@media(min-width: 1024px) {
+  .choose-triangle svg {
+    transform: scale(1);
+  }
+  .logo {
+    line-height: 0.8;
+    position: relative;
+    top: 10px;
+  }
+  .logo h1 {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+  }
+  .app {
+    width: 70%;
+    height: 100vh;
+    margin: 0 auto;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .choose {
+    width: 400px;
+    padding: 20px;
+  }
+  .coin-inner {
+    height: 160px;
+    width: 160px;
+  }
+  .coin-background {
+    height: 130px;
+    width: 130px;
+  }
+  .paper {
+    top: -50px;
+    left: 0;
+  }
+  .scissors {
+    top: -50px;
+    right: 0;
+  }
+  .rock {
+    left: -100px;
+    right: 0;
+    bottom: -50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+  }
+  .battle .coin-inner {
+    height: 220px;
+    width: 220px;
+  }
+  .battle .coin-background {
+    height: 180px;
+    width: 180px;
+  }
+  .winner {
+    width: 400px;
+    height: 400px;
+    top: 65%;
+    left: 50%;
+    background: radial-gradient(transparent 20%, rgba(245, 245, 245, 0.145) 34%, rgba(245, 245, 245, .145) 40%, rgba(245, 245, 245, .095) 30%, rgba(245, 245, 245, .095) 55%, rgba(245, 245, 245, .055) 50%, rgba(245, 245, 245, .055) 100%);
+  }
+  .choose, .result, .battle {
+    margin-top: 120px;
+  }
+  .picking h3 {
+    order: 1;
+  }
+  .picking .coin {
+    order: 2;
+  }
+  .result {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .picking.player {
+    order: 1;
+  }
+  .picking.house {
+    order: 3;
+  }
+  .show-container {
+    order: 2;
+    width: 25%;
+  }
+  .show-container {
+    padding-top: 20px;
+  }
+  .show-score h1 {
+    font-size: 1.5rem;
+  }
+  .btn-again {
+    width: 150%;
+  }
+  .btn-footer {
+    position: absolute;
+    bottom: 20px;
+    justify-content: flex-end;
+  }
+  .modal-container {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .modal {
+    background: white;
+    width: 40%;
+    margin: 130px auto;
+    border-radius: 5px;
+    height: 60%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .rules {
+    order: 1;
+    width: 50%;
+    height: 30px;
+    padding: 0 50px;
+    font-size: 1.2rem;
+    color: rgb(128, 128, 128, 0.8)
+  }
+  .modal-image {
+    order: 3;
+    transform: scale(1.2);
+    margin-top: 0px;
+  }
+  .close-modal {
+    width: 50%;
+    order: 2;
+    height: 30px;
+    margin-top: 0;
+    padding: 0 50px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@media(min-width: 1440px) {
+  .app {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 30px;
+  }
+}
